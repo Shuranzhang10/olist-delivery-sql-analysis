@@ -1,0 +1,89 @@
+ order_status | n_orders |  pct  
+--------------+----------+-------
+ delivered    |    96478 | 97.02
+ shipped      |     1107 |  1.11
+ canceled     |      625 |  0.63
+ unavailable  |      609 |  0.61
+ invoiced     |      314 |  0.32
+ processing   |      301 |  0.30
+ created      |        5 |  0.01
+ approved     |        2 |  0.00
+(8 rows)
+
+ missing_approval | missing_delivery | delivered_but_no_date | delivered_before_purchase 
+------------------+------------------+-----------------------+---------------------------
+              160 |             2965 |                     8 |                         0
+(1 row)
+
+ n_rows | distinct_review_id | distinct_order_id | distinct_pair 
+--------+--------------------+-------------------+---------------
+  99224 |              98410 |             98673 |         99224
+(1 row)
+
+ orders_with_multiple_reviews 
+------------------------------
+                          547
+(1 row)
+
+         relation         | orphans 
+--------------------------+---------
+ order_items -> sellers   |       0
+ order_items -> products  |       0
+ order_payments -> orders |       0
+ orders -> customers      |       0
+ order_reviews -> orders  |       0
+ order_items -> orders    |       0
+(6 rows)
+
+ products_without_category 
+---------------------------
+                       610
+(1 row)
+
+             untranslated_category             
+-----------------------------------------------
+ portateis_cozinha_e_preparadores_de_alimentos
+ pc_gamer
+(2 rows)
+
+   month    | n_orders 
+------------+----------
+ 2016-09-01 |        4
+ 2016-10-01 |      324
+ 2016-12-01 |        1
+ 2017-01-01 |      800
+ 2017-02-01 |     1780
+ 2017-03-01 |     2682
+ 2017-04-01 |     2404
+ 2017-05-01 |     3700
+ 2017-06-01 |     3245
+ 2017-07-01 |     4026
+ 2017-08-01 |     4331
+ 2017-09-01 |     4285
+ 2017-10-01 |     4631
+ 2017-11-01 |     7544
+ 2017-12-01 |     5673
+ 2018-01-01 |     7269
+ 2018-02-01 |     6728
+ 2018-03-01 |     7211
+ 2018-04-01 |     6939
+ 2018-05-01 |     6873
+ 2018-06-01 |     6167
+ 2018-07-01 |     6292
+ 2018-08-01 |     6512
+ 2018-09-01 |       16
+ 2018-10-01 |        4
+(25 rows)
+
+psql:03_data_quality.sql:76: NOTICE:  constraint "order_reviews_pkey" of relation "order_reviews" does not exist, skipping
+psql:03_data_quality.sql:79: NOTICE:  constraint "fk_orders_customer" of relation "orders" does not exist, skipping
+psql:03_data_quality.sql:81: NOTICE:  constraint "fk_items_order" of relation "order_items" does not exist, skipping
+psql:03_data_quality.sql:83: NOTICE:  constraint "fk_items_product" of relation "order_items" does not exist, skipping
+psql:03_data_quality.sql:85: NOTICE:  constraint "fk_items_seller" of relation "order_items" does not exist, skipping
+psql:03_data_quality.sql:87: NOTICE:  constraint "fk_payments_order" of relation "order_payments" does not exist, skipping
+psql:03_data_quality.sql:89: NOTICE:  constraint "fk_reviews_order" of relation "order_reviews" does not exist, skipping
+ n_clean_delivered_orders 
+--------------------------
+                    96470
+(1 row)
+
